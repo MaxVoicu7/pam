@@ -1,0 +1,32 @@
+[
+  {
+    "amount": 10000,
+    "percentage": 5,
+    "months": 12,
+    "monthlyPayment": 858.41
+  },
+  {
+    "amount": 20000,
+    "percentage": 4.5,
+    "months": 24,
+    "monthlyPayment": 876.04
+  },
+  {
+    "amount": 15000,
+    "percentage": 6,
+    "months": 36,
+    "monthlyPayment": 456.78
+  },
+  {
+    "amount": 15000,
+    "percentage": 6,
+    "months": 36,
+    "monthlyPayment": 456.78
+  },
+  {
+    "amount": 15000,
+    "percentage": 6,
+    "months": 36,
+    "monthlyPayment": 456.78
+  }
+]
