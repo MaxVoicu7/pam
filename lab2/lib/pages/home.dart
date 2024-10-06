@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lab2/models/category.dart';
+import 'package:lab2/models/medical_center.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -8,92 +9,399 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final categories = CategoryModel.getCategories();
+    final medicalCenters = MedicalCenterModel.getMedicalCenters();
 
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Padding(
-        padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 40.0),
-        child: Column(
-          children: [
-            SearchDoctor(),
-            Container(
-              height: 163,
-              width: double.infinity,
-              decoration:
-                  BoxDecoration(borderRadius: BorderRadius.circular(15)),
-              clipBehavior: Clip.hardEdge,
-              child: Stack(
-                alignment: Alignment.center,
-                children: [
-                  Image.asset(
-                    'assets/images/doctor.png',
-                    fit: BoxFit.fitWidth,
-                    width: double.infinity,
-                    alignment: Alignment.topLeft,
-                    scale: 1.5,
-                  ),
-                  Positioned(
-                    top: -51,
-                    left: -51,
-                    child: Container(
-                      height: 162,
-                      width: 162,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        shape: BoxShape.circle,
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(left: 24.0, right: 24.0, top: 40.0),
+            child: Column(
+              children: [
+                LocationWidget(),
+                SearchDoctor(),
+                DoctorWidget(),
+                Categories(categories: categories),
+                MedicalCentersWidget(medicalCenters: medicalCenters)
+              ],
+            ),
+          ),
+        ));
+  }
+}
+
+class MedicalCentersWidget extends StatelessWidget {
+  const MedicalCentersWidget({
+    super.key,
+    required this.medicalCenters,
+  });
+
+  final List<MedicalCenterModel> medicalCenters;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.only(bottom: 14.0),
+      child: Column(
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'Nearby Medical Centers',
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xff1c2a3a),
+                ),
+              ),
+              Text(
+                'See All',
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w500,
+                  color: Color(0xff6b7280),
+                ),
+              ),
+            ],
+          ),
+          SizedBox(height: 10),
+          SizedBox(
+            height: 232,
+            child: ListView.separated(
+              itemCount: medicalCenters.length,
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: (context, index) {
+                return SizedBox(width: 20);
+              },
+              itemBuilder: (context, index) {
+                return Container(
+                  clipBehavior: Clip.hardEdge,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Color(0xff000000).withOpacity(0.1),
+                        blurRadius: 2,
+                        spreadRadius: 0.0,
+                        offset: Offset(0, 0),
                       ),
-                    ),
+                    ],
                   ),
-                  Positioned(
-                    bottom: -141,
-                    left: 50,
-                    child: Container(
-                      height: 162,
-                      width: 162,
-                      decoration: BoxDecoration(
-                        color: Colors.white.withOpacity(0.2),
-                        shape: BoxShape.circle,
-                      ),
-                    ),
-                  ),
-                  Container(
-                    height: double.infinity,
-                    width: double.infinity,
-                    alignment: Alignment.centerLeft,
-                    padding: EdgeInsets.only(left: 24.0),
-                    child: SizedBox(
-                      width: 172,
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Column(
+                    children: [
+                      Stack(
                         children: [
-                          Text(
-                            'Looking for Specialist Doctors?',
-                            style: TextStyle(
-                              fontFamily: 'Inter',
-                              fontSize: 18,
-                              fontWeight: FontWeight.w700,
-                              color: Color(0xffffffff),
+                          Image.asset(
+                            medicalCenters[index].imagePath,
+                            fit: BoxFit.cover,
+                            height: 120,
+                            width: 232,
+                          ),
+                          Positioned(
+                            top: 10,
+                            right: 10,
+                            child: Container(
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: Color(0xff1f2a37).withOpacity(0.2),
+                                borderRadius: BorderRadius.circular(18),
+                              ),
+                              child: SvgPicture.asset(
+                                'assets/icons/heart.svg',
+                                fit: BoxFit.scaleDown,
+                              ),
                             ),
                           ),
-                          SizedBox(height: 10),
-                          Text('Schedule an appointment with our top doctors',
-                              style: TextStyle(
-                                fontFamily: 'Inter',
-                                fontSize: 12,
-                                fontWeight: FontWeight.w400,
-                                color: Color(0xffffffff),
-                              )),
                         ],
                       ),
+                      Container(
+                        width: 222,
+                        padding: EdgeInsets.all(5),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              medicalCenters[index].name,
+                              style: TextStyle(
+                                fontFamily: 'Inter',
+                                fontSize: 14,
+                                fontWeight: FontWeight.w700,
+                                color: Color(0xff4b5563),
+                              ),
+                            ),
+                            SizedBox(height: 5),
+                            Row(
+                              children: [
+                                SvgPicture.asset(
+                                  'assets/icons/location.svg',
+                                  fit: BoxFit.scaleDown,
+                                  colorFilter: ColorFilter.mode(
+                                    Color(0xff6b7280),
+                                    BlendMode.srcIn,
+                                  ),
+                                ),
+                                SizedBox(width: 5),
+                                Text(
+                                  medicalCenters[index].address,
+                                  style: TextStyle(
+                                    fontFamily: 'Inter',
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.w400,
+                                    color: Color(0xff6b7280),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 5),
+                            Row(
+                              children: [
+                                Text(medicalCenters[index].rating.toString(),
+                                    style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w600,
+                                      color: Color(0xff6b7280),
+                                    )),
+                                SizedBox(width: 5),
+                                SvgPicture.asset('./assets/icons/full-star.svg',
+                                    fit: BoxFit.scaleDown),
+                                SvgPicture.asset('./assets/icons/full-star.svg',
+                                    fit: BoxFit.scaleDown),
+                                SvgPicture.asset('./assets/icons/full-star.svg',
+                                    fit: BoxFit.scaleDown),
+                                SvgPicture.asset('./assets/icons/full-star.svg',
+                                    fit: BoxFit.scaleDown),
+                                SvgPicture.asset('./assets/icons/full-star.svg',
+                                    fit: BoxFit.scaleDown),
+                                SizedBox(width: 5),
+                                Text(
+                                    '(${medicalCenters[index].reviewCount} Reviews)',
+                                    style: TextStyle(
+                                      fontFamily: 'Inter',
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w400,
+                                      color: Color(0xff6b7280),
+                                    )),
+                              ],
+                            ),
+                            Divider(
+                              color: Color(0xffe5e7eb),
+                              thickness: 1,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/icons/routing.svg',
+                                      fit: BoxFit.scaleDown,
+                                    ),
+                                    SizedBox(width: 5),
+                                    Text(
+                                      '${medicalCenters[index].distance} km/ ${medicalCenters[index].distanceTime} min',
+                                      style: TextStyle(
+                                        fontFamily: 'Inter',
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xff6b7280),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    SvgPicture.asset(
+                                      'assets/icons/hospital.svg',
+                                      fit: BoxFit.scaleDown,
+                                    ),
+                                    Text('Hospital',
+                                        style: TextStyle(
+                                          fontFamily: 'Inter',
+                                          fontSize: 12,
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xff6b7280),
+                                        )),
+                                  ],
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class LocationWidget extends StatelessWidget {
+  const LocationWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        padding: EdgeInsets.only(bottom: 14.0),
+        child:
+            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Location',
+                style: TextStyle(
+                  fontFamily: 'Inter',
+                  fontSize: 14,
+                  fontWeight: FontWeight.w400,
+                  color: Color(0xff6b7280),
+                ),
+              ),
+              Row(
+                children: [
+                  SvgPicture.asset(
+                    'assets/icons/location.svg',
+                    fit: BoxFit.scaleDown,
+                  ),
+                  SizedBox(width: 5),
+                  Text(
+                    'Seattle, USA',
+                    style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600,
+                      color: Color(0xff374151),
                     ),
-                  )
+                  ),
+                  SizedBox(width: 5),
+                  SvgPicture.asset(
+                    'assets/icons/arrow-down.svg',
+                    fit: BoxFit.scaleDown,
+                  ),
+                ],
+              )
+            ],
+          ),
+          Container(
+            padding: EdgeInsets.all(5),
+            decoration: BoxDecoration(
+              color: Color(0xfff3f4f6),
+              borderRadius: BorderRadius.circular(18),
+            ),
+            child: Stack(children: [
+              SvgPicture.asset(
+                'assets/icons/notification.svg',
+                fit: BoxFit.scaleDown,
+              ),
+              Positioned(
+                  top: 3,
+                  left: 15,
+                  child: Container(
+                    height: 5,
+                    width: 5,
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Colors.red,
+                    ),
+                  ))
+            ]),
+          ),
+        ]));
+  }
+}
+
+class DoctorWidget extends StatelessWidget {
+  const DoctorWidget({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 14.0),
+      height: 163,
+      width: double.infinity,
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+      clipBehavior: Clip.hardEdge,
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Image.asset(
+            'assets/images/doctor.png',
+            fit: BoxFit.fitWidth,
+            width: double.infinity,
+            alignment: Alignment.topLeft,
+            scale: 1.5,
+          ),
+          Positioned(
+            top: -51,
+            left: -51,
+            child: Container(
+              height: 162,
+              width: 162,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+          Positioned(
+            bottom: -141,
+            left: 50,
+            child: Container(
+              height: 162,
+              width: 162,
+              decoration: BoxDecoration(
+                color: Colors.white.withOpacity(0.2),
+                shape: BoxShape.circle,
+              ),
+            ),
+          ),
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            alignment: Alignment.centerLeft,
+            padding: EdgeInsets.only(left: 24.0),
+            child: SizedBox(
+              width: 172,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Looking for Specialist Doctors?',
+                    style: TextStyle(
+                      fontFamily: 'Inter',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w700,
+                      color: Color(0xffffffff),
+                    ),
+                  ),
+                  SizedBox(height: 10),
+                  Text('Schedule an appointment with our top doctors',
+                      style: TextStyle(
+                        fontFamily: 'Inter',
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: Color(0xffffffff),
+                      )),
                 ],
               ),
             ),
-            Categories(categories: categories)
-          ],
-        ),
+          )
+        ],
       ),
     );
   }
@@ -110,7 +418,7 @@ class Categories extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        margin: EdgeInsets.only(top: 14.0, bottom: 14.0),
+        margin: EdgeInsets.only(bottom: 14.0),
         child: Column(
           children: [
             Row(
@@ -220,7 +528,7 @@ class SearchDoctor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 14.0, bottom: 14.0),
+      margin: EdgeInsets.only(bottom: 14.0),
       height: 40.0,
       child: TextField(
         style: TextStyle(
