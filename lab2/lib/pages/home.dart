@@ -41,7 +41,7 @@ class DoctorsWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 16.0, right: 16.0, top: 14.0, bottom: 20.0),
+      margin: EdgeInsets.only(left: 16.0, right: 16.0, bottom: 20.0),
       child: Column(children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -104,10 +104,16 @@ class DoctorCard extends StatelessWidget {
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
-            color: Color(0xff000000).withOpacity(0.1),
-            blurRadius: 2,
+            color: Color(0xff000000).withOpacity(0.05),
+            blurRadius: 6,
             spreadRadius: 0.0,
-            offset: Offset(0, 0),
+            offset: Offset(0, 4),
+          ),
+          BoxShadow(
+            color: Color(0xff000000).withOpacity(0.1),
+            blurRadius: 15,
+            spreadRadius: -3.0,
+            offset: Offset(0, 10),
           ),
         ],
       ),
@@ -227,52 +233,54 @@ class MedicalCentersWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          margin: EdgeInsets.only(left: 16.0, right: 16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Nearby Medical Centers',
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 16,
-                  fontWeight: FontWeight.w700,
-                  color: Color(0xff1c2a3a),
+    return Container(
+      padding: EdgeInsets.only(top: 10.0, bottom: 10.0),
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.only(left: 16.0, right: 16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'Nearby Medical Centers',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700,
+                    color: Color(0xff1c2a3a),
+                  ),
                 ),
-              ),
-              Text(
-                'See All',
-                style: TextStyle(
-                  fontFamily: 'Inter',
-                  fontSize: 14,
-                  fontWeight: FontWeight.w500,
-                  color: Color(0xff6b7280),
+                Text(
+                  'See All',
+                  style: TextStyle(
+                    fontFamily: 'Inter',
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500,
+                    color: Color(0xff6b7280),
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
-        SizedBox(height: 10),
-        SizedBox(
-          height: 232,
-          child: ListView.separated(
-            itemCount: medicalCenters.length,
-            scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.only(left: 16.0, right: 16.0),
-            separatorBuilder: (context, index) {
-              return SizedBox(width: 20);
-            },
-            itemBuilder: (context, index) {
-              return MedicalCenterCardWidget(
-                  medicalCenter: medicalCenters[index]);
-            },
+          SizedBox(height: 10),
+          SizedBox(
+            height: 250,
+            child: ListView.separated(
+              itemCount: medicalCenters.length,
+              scrollDirection: Axis.horizontal,
+              padding: EdgeInsets.only(left: 16.0, right: 16.0),
+              separatorBuilder: (context, index) {
+                return SizedBox(width: 20);
+              },
+              itemBuilder: (context, index) {
+                return MedicalCenterCardWidget(
+                    medicalCenter: medicalCenters[index]);
+              },
+            ),
           ),
-        ),
-        SizedBox(height: 5),
-      ],
+        ],
+      ),
     );
   }
 }
@@ -288,16 +296,28 @@ class MedicalCenterCardWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      clipBehavior: Clip.hardEdge,
+      margin: EdgeInsets.only(bottom: 10.0),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(15),
         boxShadow: [
           BoxShadow(
             color: Color(0xff000000).withOpacity(0.1),
-            blurRadius: 2,
-            spreadRadius: 0.0,
+            blurRadius: 1,
+            spreadRadius: 0,
             offset: Offset(0, 0),
+          ),
+          BoxShadow(
+            color: Color(0xff000000).withOpacity(0.09),
+            blurRadius: 2,
+            spreadRadius: 0,
+            offset: Offset(1, 1),
+          ),
+          BoxShadow(
+            color: Color(0xff000000).withOpacity(0.05),
+            blurRadius: 2,
+            spreadRadius: 0,
+            offset: Offset(3, 3),
           ),
         ],
       ),
