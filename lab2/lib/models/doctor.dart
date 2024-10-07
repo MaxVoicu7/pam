@@ -19,7 +19,7 @@ class DoctorModel {
 
     doctors.add(DoctorModel(
         name: 'David Patel',
-        imagePath: './assets/images/david_patel.svg',
+        imagePath: './assets/images/david_patel.png',
         center: 'Cardiology Center, USA',
         speciality: 'Cardiologist',
         rating: 5.0,
@@ -27,7 +27,7 @@ class DoctorModel {
 
     doctors.add(DoctorModel(
         name: 'Jessica Turner',
-        imagePath: './assets/images/jessica_turner.svg',
+        imagePath: './assets/images/jessica_turner.png',
         center: "Women's Clinic,Seatle,USA",
         speciality: 'Gynecologist',
         rating: 4.9,
@@ -35,7 +35,7 @@ class DoctorModel {
 
     doctors.add(DoctorModel(
         name: 'Michael Johnson',
-        imagePath: './assets/images/michael_johnson.svg',
+        imagePath: './assets/images/michael_johnson.png',
         center: "Maple Associates, NY,USA",
         speciality: 'Orthopedic Surgery',
         rating: 4.7,
@@ -43,7 +43,7 @@ class DoctorModel {
 
     doctors.add(DoctorModel(
         name: 'Emily Walker',
-        imagePath: './assets/images/emily_walker.svg',
+        imagePath: './assets/images/emily_walker.png',
         center: 'Serenity Pediatrics Clinic',
         speciality: 'Pediatrics',
         rating: 5.0,
@@ -51,7 +51,7 @@ class DoctorModel {
 
     doctors.add(DoctorModel(
         name: 'Anna Kareninca',
-        imagePath: './assets/images/anna_kareninca.svg',
+        imagePath: './assets/images/anna_kareninca.png',
         center: 'Cardiology Center, USA',
         speciality: 'Cardiologist',
         rating: 4.5,

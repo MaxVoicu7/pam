@@ -37,6 +37,15 @@ class MedicalCenterModel {
         distance: 2.5,
         distanceTime: 40));
 
+    medicalCenters.add(MedicalCenterModel(
+        name: 'University Hospital',
+        imagePath: './assets/images/health-university.jpg',
+        address: '2451 Hospital Dr, Mobile',
+        rating: 2.8,
+        reviewCount: 293,
+        distance: 5.5,
+        distanceTime: 100));
+
     return medicalCenters;
   }
 }
