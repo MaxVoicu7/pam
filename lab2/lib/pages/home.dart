@@ -1,7 +1,9 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:lab2/models/category.dart';
 import 'package:lab2/models/doctor.dart';
+import 'package:lab2/models/main_card.dart';
 import 'package:lab2/models/medical_center.dart';
 
 class HomePage extends StatelessWidget {
@@ -12,6 +14,7 @@ class HomePage extends StatelessWidget {
     final categories = CategoryModel.getCategories();
     final medicalCenters = MedicalCenterModel.getMedicalCenters();
     final doctors = DoctorModel.getDoctors();
+    final mainCards = MainCardModel.getMainCards();
 
     return Scaffold(
         backgroundColor: Colors.white,
@@ -20,13 +23,85 @@ class HomePage extends StatelessWidget {
             children: [
               LocationWidget(),
               SearchDoctor(),
-              MainCard(),
+              MainCardsCarousel(mainCards: mainCards),
               Categories(categories: categories),
               MedicalCentersWidget(medicalCenters: medicalCenters),
               DoctorsWidget(doctors: doctors)
             ],
           ),
         ));
+  }
+}
+
+class MainCardsCarousel extends StatefulWidget {
+  const MainCardsCarousel({
+    super.key,
+    required this.mainCards,
+  });
+
+  final List<MainCardModel> mainCards;
+
+  @override
+  State<MainCardsCarousel> createState() => _MainCardsCarouselState();
+}
+
+class _MainCardsCarouselState extends State<MainCardsCarousel> {
+  int selectedMainCard = 0; // State for the selected card
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.only(bottom: 20.0),
+      height: 170,
+      width: double.infinity,
+      child: Stack(
+        children: [
+          CarouselSlider(
+            items: widget.mainCards.map((card) {
+              return Builder(
+                builder: (BuildContext context) {
+                  return Container(
+                    margin: EdgeInsets.symmetric(horizontal: 16.0),
+                    child: MainCard(card: card),
+                  );
+                },
+              );
+            }).toList(),
+            options: CarouselOptions(
+              height: 163,
+              autoPlay: true,
+              enableInfiniteScroll: true,
+              viewportFraction: 1.0,
+              onPageChanged: (index, reason) {
+                setState(() {
+                  selectedMainCard = index;
+                });
+              },
+            ),
+          ),
+          Positioned(
+            right: 155,
+            bottom: 10,
+            child: Row(
+              children: List.generate(widget.mainCards.length, (i) {
+                bool isActive = selectedMainCard == i;
+
+                return AnimatedContainer(
+                  duration: Duration(milliseconds: 300),
+                  decoration: BoxDecoration(
+                    color: isActive ? Colors.white : Color(0xffe5efeb),
+                    borderRadius: BorderRadius.circular(5),
+                  ),
+                  margin: EdgeInsets.only(right: 5),
+                  height: 6,
+                  width: isActive ? 30 : 6,
+                );
+              }),
+            ),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -559,12 +634,14 @@ class LocationWidget extends StatelessWidget {
 class MainCard extends StatelessWidget {
   const MainCard({
     super.key,
+    required this.card,
   });
+
+  final MainCardModel card;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(bottom: 20.0, left: 16.0, right: 16.0),
       height: 163,
       width: double.infinity,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
@@ -573,7 +650,7 @@ class MainCard extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           Image.asset(
-            'assets/images/doctor.png',
+            card.imagePath,
             fit: BoxFit.fitWidth,
             width: double.infinity,
             alignment: Alignment.topLeft,
@@ -615,7 +692,7 @@ class MainCard extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    'Looking for Specialist Doctors?',
+                    card.title,
                     style: TextStyle(
                       fontFamily: 'Inter',
                       fontSize: 18,
@@ -624,7 +701,7 @@ class MainCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 10),
-                  Text('Schedule an appointment with our top doctors',
+                  Text(card.subtitle,
                       style: TextStyle(
                         fontFamily: 'Inter',
                         fontSize: 12,
