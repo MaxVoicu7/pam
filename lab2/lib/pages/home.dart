@@ -400,11 +400,17 @@ class MedicalCenterCardWidget extends StatelessWidget {
         children: [
           Stack(
             children: [
-              Image.asset(
-                medicalCenter.imagePath,
-                fit: BoxFit.cover,
-                height: 120,
-                width: 232,
+              ClipRRect(
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(15),
+                  topRight: Radius.circular(15),
+                ),
+                child: Image.asset(
+                  medicalCenter.imagePath,
+                  fit: BoxFit.cover,
+                  height: 120,
+                  width: 232,
+                ),
               ),
               Positioned(
                 top: 10,

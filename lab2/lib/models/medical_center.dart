@@ -38,7 +38,7 @@ class MedicalCenterModel {
         distanceTime: 40));
 
     medicalCenters.add(MedicalCenterModel(
-        name: 'University Hospital',
+        name: 'Spital Municipal',
         imagePath: './assets/images/health-university.jpg',
         address: '2451 Hospital Dr, Mobile',
         rating: 2.8,
