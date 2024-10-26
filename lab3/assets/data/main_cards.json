@@ -1,0 +1,22 @@
+[
+  {
+    "title": "Summer Sale",
+    "description": "Enjoy up to 50% off on all summer products!",
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/main_cards/doctor.png"
+  },
+  {
+    "title": "New Arrivals",
+    "description": "Check out the latest trends in our collection.",
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/main_cards/doctor2.png"
+  },
+  {
+    "title": "Holiday Discounts",
+    "description": "Get amazing discounts on holiday gifts and more!",
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/main_cards/doctor3.png"
+  },
+  {
+    "title": "Exclusive Offer",
+    "description": "Sign up now and get an exclusive 10% discount.",
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/main_cards/doctor4.png"
+  }
+]

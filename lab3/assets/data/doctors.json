@@ -1,0 +1,106 @@
+[
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/anna_kareninca.png",
+    "full_name": "Full Name 1",
+    "type_of_doctor": "Cardiologist",
+    "location_of_center": "Health Center 1, USA",
+    "review_rate": 4.1,
+    "reviews_count": 53
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/david_patel.png",
+    "full_name": "Full Name 2",
+    "type_of_doctor": "Pediatrician",
+    "location_of_center": "Health Center 2, USA",
+    "review_rate": 4.2,
+    "reviews_count": 56
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/emily_walker.png",
+    "full_name": "Full Name 3",
+    "type_of_doctor": "Dermatologist",
+    "location_of_center": "Health Center 3, USA",
+    "review_rate": 4.3,
+    "reviews_count": 59
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/jessica_turner.png",
+    "full_name": "Full Name 4",
+    "type_of_doctor": "Orthopedic Surgeon",
+    "location_of_center": "Health Center 4, USA",
+    "review_rate": 4.4,
+    "reviews_count": 62
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/michael_johnson.png",
+    "full_name": "Full Name 5",
+    "type_of_doctor": "Dentist",
+    "location_of_center": "Health Center 5, USA",
+    "review_rate": 4.5,
+    "reviews_count": 65
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/bermix-studio-ODM_VsTM2QQ-unsplash.jpg",
+    "full_name": "Full Name 6",
+    "type_of_doctor": "Cardiologist",
+    "location_of_center": "Health Center 6, USA",
+    "review_rate": 4.6,
+    "reviews_count": 68
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/eben-kassaye-hgD5IfjyIt8-unsplash.jpg",
+    "full_name": "Full Name 7",
+    "type_of_doctor": "Pediatrician",
+    "location_of_center": "Health Center 7, USA",
+    "review_rate": 4.7,
+    "reviews_count": 71
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/hush-naidoo-jade-photography-SZJoYW4eLHE-unsplash.jpg",
+    "full_name": "Full Name 8",
+    "type_of_doctor": "Dermatologist",
+    "location_of_center": "Health Center 8, USA",
+    "review_rate": 4.8,
+    "reviews_count": 74
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/jeremy-alford-O13B7suRG4A-unsplash.jpg",
+    "full_name": "Full Name 9",
+    "type_of_doctor": "Orthopedic Surgeon",
+    "location_of_center": "Health Center 9, USA",
+    "review_rate": 4.9,
+    "reviews_count": 77
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/mohamad-azaam-njTNSYPOaUE-unsplash.jpg",
+    "full_name": "Full Name 10",
+    "type_of_doctor": "Dentist",
+    "location_of_center": "Health Center 10, USA",
+    "review_rate": 4.0,
+    "reviews_count": 80
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/nappy-9aBsCd9Fvgc-unsplash.jpg",
+    "full_name": "Full Name 11",
+    "type_of_doctor": "Cardiologist",
+    "location_of_center": "Health Center 11, USA",
+    "review_rate": 4.1,
+    "reviews_count": 83
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/national-cancer-institute-pCqzMe04s8g-unsplash.jpg",
+    "full_name": "Full Name 12",
+    "type_of_doctor": "Pediatrician",
+    "location_of_center": "Health Center 12, USA",
+    "review_rate": 4.2,
+    "reviews_count": 86
+  },
+  {
+    "image": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/doctors/usman-yousaf-PVjfLss3b-c-unsplash.jpg",
+    "full_name": "Full Name 13",
+    "type_of_doctor": "Dermatologist",
+    "location_of_center": "Health Center 13, USA",
+    "review_rate": 4.3,
+    "reviews_count": 89
+  }
+]
