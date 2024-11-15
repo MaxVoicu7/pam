@@ -1,8 +1,13 @@
 import 'package:get/get.dart';
-import 'package:lab2/models/doctor.dart';
+import '../../domain/entities/doctor.dart';
+import '../../domain/usecases/get_doctors.dart';
 
 class DoctorController extends GetxController {
-  var doctors = <DoctorModel>[].obs;
+  final GetDoctors getDoctors;
+
+  DoctorController({required this.getDoctors});
+
+  var doctors = <Doctor>[].obs;
 
   @override
   void onInit() {
@@ -12,8 +17,7 @@ class DoctorController extends GetxController {
 
   void loadDoctors() async {
     try {
-      var fetchedDoctors = await DoctorModel.fetchDoctors();
-      doctors.value = fetchedDoctors;
+      doctors.value = await getDoctors.execute();
     } catch (e) {
       // ignore: avoid_print
       print("Error loading doctors: $e");
