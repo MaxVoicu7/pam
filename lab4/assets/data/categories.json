@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Cardiology",
+    "color": "0xffdc9497",
+    "icon": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/categories/cardiology.svg"
+  },
+  {
+    "title": "Dentistry",
+    "color": "0xff93c19e",
+    "icon": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/categories/dentistry.svg"
+  },
+  {
+    "title": "Orthopedics",
+    "color": "0xfff5ad7e",
+    "icon": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/categories/gastroenology.svg"
+  },
+  {
+    "title": "Dermatology",
+    "color": "0xff4d9b91",
+    "icon": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/categories/general-health.svg"
+  },
+  {
+    "title": "Pediatrics",
+    "color": "0xffaca1cd",
+    "icon": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/categories/laboratory.svg"
+  },
+  {
+    "title": "Ophthalmology",
+    "color": "0xff352261",
+    "icon": "https://dbfungysyeudfsuvzkqq.supabase.co/storage/v1/object/public/pam-lab-3/categories/neurology.svg"
+  }
+]
